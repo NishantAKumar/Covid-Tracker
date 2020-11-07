@@ -1,0 +1,18 @@
+{% extends 'COVIDtracker/base.html'%}
+
+{% block body %}
+<div class="registeration">
+<form method="POST" action="register">
+    {% csrf_token %}
+    <input type="text" name="uname" placeholder="Username"><br><br>
+    <input type ="email" name="email" placeholder="E-mail"><br><br>
+    <input type="password" name = "pass" placeholder="Password"><br><br>
+    <input type="password" name="conpass" placeholder="Re-Enter The Password"><br><br>
+    <input type="submit" value="Register"></a>
+
+</form>
+</div><br>
+{% for each in messages%}
+{{each}}
+{% endfor %}
+{% endblock %}

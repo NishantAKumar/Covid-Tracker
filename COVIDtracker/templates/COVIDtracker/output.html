@@ -1,0 +1,29 @@
+{% extends 'COVIDtracker/base.html'%}
+
+{% block body %}
+
+{% if parameters.ErrorCode == 0%}
+<h2>The COVID status for {{parameters.district}} in {{parameters.state}} is as follows: </h2>
+<br>
+<div class="table">
+<table border="3" align="center">
+    <tr><td> Active Cases </td><td> {{parameters.active}} </td></tr>
+    <tr><td> Confirmed Cases </td><td> {{parameters.confirmed}} </td></tr>
+    <tr><td> Deceased </td><td> {{parameters.deceased}} </td></tr>
+    <tr><td> Recovered </td><td> {{parameters.recovered}} </td></tr>
+</table>
+</div>
+{% endif %}
+
+{% if parameters.ErrorCode == 1%}
+<h2 style="color: rgb(212, 20, 20);">Sorry! The State Or The District You Are Trying To Find Is Not Present In Our Database Or You Might Have Misspelled Either Of The Two Or Both.</h2>
+<i>Error Code = 1</i><br><br>
+{% endif %}
+
+{% if parameters.ErrorCode == 2%}
+<h2 style="color: rgb(212, 20, 20);">An Unknown Error As Occurred. Kindly Make Sure You Are Following The Input Instructions Correctly.</h2>
+<i>Error Code = 2</i><br><br>
+{% endif %}
+
+<a href="{% url 'loggedin-page' %}"><input type="button" value="Back"></a>
+{% endblock %}

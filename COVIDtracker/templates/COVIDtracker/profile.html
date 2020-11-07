@@ -1,0 +1,13 @@
+{% extends 'COVIDtracker/base.html'%}
+
+{% block body %}
+
+{% if user != AnonymousUser %}
+
+<h3>This Page Shows User Data</h3>
+<h4>Username : {{user}}</h4>
+<h4>E-mail   : {{user.email}}</h4>
+{% endif %}
+<a href="{% url 'loggedin-page' %}"><input type="button" value="Back"></a>
+
+{% endblock %}
